@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="15b7e69f-1241-4c39-bdbe-a43c7d710bc1" name="Changes" comment="添加通知@对应人功能" />
+    <list default="true" id="15b7e69f-1241-4c39-bdbe-a43c7d710bc1" name="Changes" comment="添加通知@对应人功能,隐藏私密信息" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -66,7 +66,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="添加通知@对应人功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加通知@对应人功能" />
+    <MESSAGE value="添加通知@对应人功能,隐藏私密信息" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加通知@对应人功能,隐藏私密信息" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
