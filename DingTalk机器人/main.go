@@ -23,21 +23,40 @@ type ResponseData struct {
 	Errmsg  string `json:"errmsg"`
 }
 
+// TextInfo 定义发送text
+type TextInfo struct {
+	At      At     `json:"at"`
+	Text    Text   `json:"text"`
+	Msgtype string `json:"msgtype"`
+}
+type At struct {
+	AtMobiles []string `json:"atMobiles"`
+	IsAtAll   bool     `json:"isAtAll"`
+}
+type Text struct {
+	Content string `json:"content"`
+}
+
 // 定义发送信息方法
-func sendMessage(url string, timestamped string, sign string, content string) {
+func sendMessage(url string, timestamped string, sign string, content string, phone ...string) {
 	param := req.Param{
 		"timestamp": timestamped,
 		"sign":      sign,
 	}
-	// 定义data信息
-	msg := map[string]interface{}{
-		"msgtype": "text",
-		"text": map[string]string{
-			"content": content,
+	// 获取被@人手机，存入数组
+	var phoneList []string
+	for _, data := range phone {
+		phoneList = append(phoneList, data)
+	}
+
+	// 定义发送text信息
+	msg := TextInfo{
+		At: At{
+			AtMobiles: phoneList,
+			IsAtAll:   false,
 		},
-		"at": map[string]interface{}{
-			"isAtAll": 0,
-		},
+		Text:    Text{Content: content},
+		Msgtype: "text",
 	}
 	// 发送请求
 	r, errRequest := req.Post(url, req.BodyJSON(&msg), param)
@@ -46,7 +65,6 @@ func sendMessage(url string, timestamped string, sign string, content string) {
 		log.Fatal(errRequest)
 	}
 	_ = r.ToJSON(&responses)
-	//log.Printf("%+v", r)
 	log.Printf("Errcode: %d ,Errmsg: %s", responses.Errcode, responses.Errmsg)
 }
 
@@ -68,5 +86,5 @@ func main() {
 	timestamp := time.Now().UnixNano() / 1e6
 	timestamped, sign := getSign(timestamp, Secret)
 	// 发送消息
-	sendMessage(Webhook, timestamped, sign, "Hello World!")
+	sendMessage(Webhook, timestamped, sign, "Hello World!", "13372029519", "18061936084")
 }
