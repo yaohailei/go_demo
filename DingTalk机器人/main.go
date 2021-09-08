@@ -82,7 +82,7 @@ func getSign(timestamp int64, secret string) (string, string) {
 }
 
 func main() {
-	// 计算签名
+	// 签名
 	timestamp := time.Now().UnixNano() / 1e6
 	timestamped, sign := getSign(timestamp, Secret)
 	// 发送消息
