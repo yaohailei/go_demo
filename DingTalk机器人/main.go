@@ -86,5 +86,5 @@ func main() {
 	timestamp := time.Now().UnixNano() / 1e6
 	timestamped, sign := getSign(timestamp, Secret)
 	// 发送消息
-	sendMessage(Webhook, timestamped, sign, "Hello World!", "13372029519", "18061936084")
+	sendMessage(Webhook, timestamped, sign, "Hello World!", "13372024567", "18061931234")
 }
