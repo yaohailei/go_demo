@@ -5,10 +5,11 @@ import (
 	"crypto/sha256"
 	"encoding/base64"
 	"fmt"
-	"github.com/imroc/req"
 	"log"
 	"strconv"
 	"time"
+
+	"github.com/imroc/req"
 )
 
 // Secret 加密密钥
@@ -82,8 +83,9 @@ func getSign(timestamp int64, secret string) (string, string) {
 }
 
 func main() {
-	// 签名
+	// 获取当前时间
 	timestamp := time.Now().UnixNano() / 1e6
+	// 加签
 	timestamped, sign := getSign(timestamp, Secret)
 	// 发送消息
 	sendMessage(Webhook, timestamped, sign, "Hello World!", "13372024567", "18061931234")
