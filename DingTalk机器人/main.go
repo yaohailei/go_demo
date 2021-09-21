@@ -83,7 +83,7 @@ func getSign(timestamp int64, secret string) (string, string) {
 }
 
 func main() {
-	// 获取当前时间
+	// 获取当前时间戳（毫秒）
 	timestamp := time.Now().UnixNano() / 1e6
 	// 加签
 	timestamped, sign := getSign(timestamp, Secret)
