@@ -46,9 +46,7 @@ func main() {
 	if err != nil {
 		fmt.Println("ioutil.ReadAll error")
 	}
-	type Yao struct {
-		Response []map[string]interface{} `json:"response"`
-	}
+
 	re := Response{}
 	if err = json.Unmarshal(body, &re); err == nil {
 		fmt.Printf("%++v\n", re)
